@@ -96,6 +96,20 @@
     margin-bottom: 40px;
     position: relative;
     overflow: hidden;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  header.hero .hero-text{ flex: 1; min-width: 240px; }
+  header.hero .hero-badge{
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+  @media (max-width: 640px){
+    header.hero{ justify-content: flex-start; }
+    header.hero .hero-badge{ margin-left: 0; }
   }
   header.hero::before{
     content: "";
@@ -140,6 +154,11 @@
   }
   .contact a{ color: var(--ink); }
   .contact span.sep{ color: var(--rule); }
+
+  .badge-scale{ zoom: 0.75; }
+  @media (max-width: 640px){
+    .badge-scale{ zoom: 0.85; }
+  }
 
   /* ---------- sections ---------- */
   section{ margin-bottom: 40px; }
@@ -336,25 +355,32 @@
   </div>
 
   <header class="hero">
-    <h1 class="name">Abdul Moiz</h1>
-    <p class="role">Software QA Engineer — Manual &amp; Automation Testing<span class="cursor" aria-hidden="true"></span></p>
-    <div class="contact">
-      <span>Rawalpindi, Islamabad</span>
-      <span class="sep">/</span>
-      <a href="mailto:moiz69960@gmail.com">moiz69960@gmail.com</a>
-      <span class="sep">/</span>
-      <a href="tel:+923713328882">0371-1328882</a>
-      <span class="sep">/</span>
-      <a href="tel:+923327076069">0323-27076069</a>
-      <span class="sep">/</span>
-      <a href="https://www.linkedin.com/in/abdul-moiz-y26" target="_blank" rel="noopener">linkedin.com/in/abdul-moiz</a>
+    <div class="hero-text">
+      <h1 class="name">Abdul Moiz</h1>
+      <p class="role">Software QA Engineer — Manual &amp; Automation Testing<span class="cursor" aria-hidden="true"></span></p>
+      <div class="contact">
+        <span>Rawalpindi, Islamabad</span>
+        <span class="sep">/</span>
+        <a href="mailto:moiz69960@gmail.com">moiz69960@gmail.com</a>
+        <span class="sep">/</span>
+        <a href="tel:+923713328882">0371-1328882</a>
+        <span class="sep">/</span>
+        <a href="tel:+923327076069">0332-7076069</a>
+        <span class="sep">/</span>
+        <a href="https://www.linkedin.com/in/abdul-moiz-y26" target="_blank" rel="noopener">linkedin.com/in/abdul-moiz</a>
+      </div>
+    </div>
+    <div class="hero-badge">
+      <div class="badge-scale">
+        <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="medium" data-theme="light" data-type="HORIZONTAL" data-vanity="abdul-moiz-y26" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://pk.linkedin.com/in/abdul-moiz-y26?trk=profile-badge">Abdul Moiz</a></div>
+      </div>
     </div>
   </header>
 
   <section id="summary">
     <div class="section-head"><span class="idx">01</span><h2>Summary</h2></div>
     <div class="summary">
-      <strong>Software Quality Assurance Engineer</strong> Software Quality Assurance Engineer with hands-on experience in Manual & Automation Testing, API Testing, and Database Validation. Skilled in Playwright, Postman, SQL, Azure DevOps, and Agile methodologies. Experienced in executing test plans, building automation suites, identifying defects, and delivering reliable, high-quality software solutions.<strong>ISTQB® Certified Tester Foundation Level 4.0 (License No. 26-CTFL4-1886-PK).</strong> 
+      <strong>Software Quality Assurance Engineer</strong> with hands-on experience in Manual &amp; Automation Testing, API Testing, and Database Validation. Skilled in Playwright, Postman, SQL, Azure DevOps, and Agile methodologies. Experienced in executing test plans, building automation suites, identifying defects, and delivering reliable, high-quality software solutions. <strong>ISTQB® Certified Tester Foundation Level 4.0 (License No. 26-CTFL4-1886-PK).</strong>
     </div>
   </section>
 
@@ -374,7 +400,7 @@
         <li>Applied boundary value analysis, equivalence partitioning and error guessing across regression, sanity and smoke test cycles.</li>
         <li>Supported CI/CD automation using Azure DevOps and YAML pipelines.</li>
         <li>Collaborated with cross-functional Agile teams to identify, track, and resolve defects.</li>
-        <li>Validated end-to-end data syncing between the application and its core <b>third-party data provider</b> the primary source feeding all platform data — by tracking error logs and verifying diverse syncing scenarios, and built automated bulk data generation to simulate high-load, production-like syncing behavior.</li>
+        <li>Validated end-to-end data syncing between the application and its core <b>third-party data provider</b> — the primary source feeding all platform data — by tracking error logs and verifying diverse syncing scenarios, and built automated bulk data generation to simulate high-load, production-like syncing behavior.</li>
       </ul>
     </div>
 
@@ -489,9 +515,12 @@
       </div>
     </div>
   </section>
-<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
-  <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="light" data-type="VERTICAL" data-vanity="abdul-moiz-y26" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://pk.linkedin.com/in/abdul-moiz-y26?trk=profile-badge"></a></div>
-              
+
+  <footer>
+    <span class="ok">✓ 6/6 sections passed</span> · resume.render() completed without errors
+  </footer>
+
 </div>
+<script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
 </body>
 </html>
