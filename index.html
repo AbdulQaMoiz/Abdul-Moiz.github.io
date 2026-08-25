@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abdul Moiz — Software QA Engineer</title>
+<meta name="description" content="Abdul Moiz — Software QA Engineer. Manual & automation testing, API testing, Playwright, Azure DevOps.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #f4f6f4;
+    --surface: #ffffff;
+    --ink: #171b1e;
+    --ink-soft: #58636b;
+    --ink-faint: #8b959c;
+    --accent: #1b7f5c;
+    --accent-soft: #e4f3ec;
+    --accent-line: #bfe3d3;
+    --amber: #b3711f;
+    --amber-soft: #faf1e3;
+    --rule: #dde3e1;
+    --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: var(--accent); text-decoration: none; }
+  a:hover{ text-decoration: underline; }
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .wrap{
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 56px 24px 96px;
+  }
+
+  /* ---------- status bar ---------- */
+  .statusbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--ink-faint);
+    margin-bottom: 28px;
+  }
+  .statusbar .path::before{ content: "$ "; color: var(--accent); }
+  .badges{ display:flex; gap:8px; flex-wrap: wrap; }
+  .badge{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border: 1px solid var(--accent-line);
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+  .badge .dot{
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+
+  /* ---------- header ---------- */
+  header.hero{
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 36px 36px 30px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  header.hero::before{
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 5px; height: 100%;
+    background: var(--accent);
+  }
+  h1.name{
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: clamp(28px, 5vw, 38px);
+    letter-spacing: -0.01em;
+    margin: 0 0 6px;
+  }
+  .role{
+    font-size: 17px;
+    color: var(--ink-soft);
+    margin: 0 0 22px;
+    font-weight: 500;
+  }
+  .role .cursor{
+    display: inline-block;
+    width: 9px; height: 1.1em;
+    background: var(--accent);
+    margin-left: 3px;
+    vertical-align: -2px;
+    animation: blink 1.1s steps(1) infinite;
+  }
+  @keyframes blink{ 50%{ opacity: 0; } }
+  @media (prefers-reduced-motion: reduce){
+    .role .cursor{ animation: none; }
+  }
+
+  .contact{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .contact a{ color: var(--ink); }
+  .contact span.sep{ color: var(--rule); }
+
+  /* ---------- sections ---------- */
+  section{ margin-bottom: 40px; }
+  .section-head{
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .section-head .idx{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-line);
+    border-radius: 5px;
+    padding: 2px 6px;
+    font-weight: 600;
+  }
+  .section-head h2{
+    font-family: var(--mono);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink);
+    margin: 0;
+    font-weight: 600;
+  }
+  .section-head::after{
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .summary{
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 22px 24px;
+    color: var(--ink-soft);
+    font-size: 15.5px;
+  }
+  .summary strong{ color: var(--ink); font-weight: 600; }
+
+  /* ---------- experience ---------- */
+  .job{
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin-bottom: 16px;
+  }
+  .job-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .job-title{
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .job-meta{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-faint);
+  }
+  .job-tag{
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--amber);
+    background: var(--amber-soft);
+    border: 1px solid #f0dcb8;
+    border-radius: 999px;
+    padding: 2px 9px;
+    margin: 10px 0 14px;
+  }
+  ul.checklist{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  ul.checklist li{
+    position: relative;
+    padding-left: 26px;
+    margin-bottom: 9px;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+  }
+  ul.checklist li:last-child{ margin-bottom: 0; }
+  ul.checklist li::before{
+    content: "✓";
+    position: absolute;
+    left: 0; top: 0;
+    color: var(--accent);
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 13px;
+  }
+  ul.checklist li b{ color: var(--ink); font-weight: 600; }
+
+  /* ---------- skills ---------- */
+  .skills-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+  }
+  .skill-group{
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 16px 18px;
+  }
+  .skill-group h3{
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-faint);
+    margin: 0 0 10px;
+    font-weight: 600;
+  }
+  .chips{ display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip{
+    font-family: var(--mono);
+    font-size: 12px;
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 3px 8px;
+    color: var(--ink);
+  }
+
+  /* ---------- education ---------- */
+  .edu-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--rule);
+    flex-wrap: wrap;
+  }
+  .edu-row:last-child{ border-bottom: none; }
+  .edu-degree{ font-weight: 600; font-size: 14.5px; }
+  .edu-school{ color: var(--ink-soft); font-size: 13.5px; }
+  .edu-date{
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-faint);
+    white-space: nowrap;
+  }
+
+  footer{
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-faint);
+    margin-top: 56px;
+  }
+  footer .ok{ color: var(--accent); }
+
+  /* ---------- print ---------- */
+  @media print{
+    body{ background: #fff; }
+    .statusbar, footer{ display: none; }
+    header.hero, .job, .summary, .skill-group{
+      border: 1px solid #ddd;
+      box-shadow: none;
+    }
+    .wrap{ padding: 0 8px; }
+  }
+
+  @media (max-width: 560px){
+    .wrap{ padding: 32px 16px 64px; }
+    header.hero{ padding: 26px 22px 24px; }
+    .job{ padding: 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="statusbar">
+    <span class="path">whoami --resume abdul-moiz</span>
+    <div class="badges">
+      <span class="badge"><span class="dot"></span>Build passing</span>
+      <span class="badge"><span class="dot"></span>ISTQB® CTFL 4.0</span>
+    </div>
+  </div>
+
+  <header class="hero">
+    <h1 class="name">Abdul Moiz</h1>
+    <p class="role">Software QA Engineer — Manual &amp; Automation Testing<span class="cursor" aria-hidden="true"></span></p>
+    <div class="contact">
+      <span>Rawalpindi, Islamabad</span>
+      <span class="sep">/</span>
+      <a href="mailto:moiz69960@gmail.com">moiz69960@gmail.com</a>
+      <span class="sep">/</span>
+      <a href="tel:+923713328882">0371-1328882</a>
+      <span class="sep">/</span>
+      <a href="https://www.linkedin.com/in/abdul-moiz-9a2461311" target="_blank" rel="noopener">linkedin.com/in/abdul-moiz</a>
+    </div>
+  </header>
+
+  <section id="summary">
+    <div class="section-head"><span class="idx">01</span><h2>Summary</h2></div>
+    <div class="summary">
+      <strong>Software Quality Assurance Engineer</strong> with hands-on experience in manual &amp; automation testing, API testing, and database validation. Skilled in Playwright, Postman, SQL, Azure DevOps, and Agile methodologies. Experienced in executing test plans, building automation suites, identifying defects, and delivering reliable, high-quality software solutions.
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-head"><span class="idx">02</span><h2>Experience</h2></div>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="job-title">QA Engineer</span>
+        <span class="job-meta">Oct 2024 — Present</span>
+      </div>
+      <div class="job-meta">Synergy-IT</div>
+      <span class="job-tag">Automation &amp; Cloud Testing</span>
+      <ul class="checklist">
+        <li>Designed and executed manual and automated test cases using <b>Playwright</b> MCP &amp; CLI.</li>
+        <li>Performed API testing using Postman and validated data across Azure Storage Tables and Cosmos DB using SQL queries.</li>
+        <li>Applied boundary value analysis, equivalence partitioning and error guessing across regression, sanity and smoke test cycles.</li>
+        <li>Supported CI/CD automation using Azure DevOps and YAML pipelines.</li>
+        <li>Collaborated with cross-functional Agile teams to identify, track, and resolve defects.</li>
+        <li>Validated end-to-end data syncing between the application and its core <b>third-party data provider</b> — the primary source feeding all platform data — by tracking error logs and verifying diverse syncing scenarios, and built automated bulk data generation to simulate high-load, production-like syncing behavior.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="job-title">QA Intern</span>
+        <span class="job-meta">Jul 2024 — Oct 2024</span>
+      </div>
+      <div class="job-meta">Synergy-IT</div>
+      <span class="job-tag">Manual &amp; Functional Testing</span>
+      <ul class="checklist">
+        <li>Executed manual test cases for web applications covering functional and regression test cycles.</li>
+        <li>Reported and tracked defects throughout the testing lifecycle using structured bug ticket templates.</li>
+        <li>Performed API testing using Postman and validated application data through SQL queries.</li>
+        <li>Assisted in test case creation, test documentation, and developer bug fix validation.</li>
+        <li>Participated in Agile/Scrum meetings and QA activities.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-head"><span class="idx">03</span><h2>Skills</h2></div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h3>Programming</h3>
+        <div class="chips">
+          <span class="chip">JavaScript</span><span class="chip">Java</span><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">SQL</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Testing</h3>
+        <div class="chips">
+          <span class="chip">Manual</span><span class="chip">Automation</span><span class="chip">BVA</span><span class="chip">API</span><span class="chip">UAT</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Tools</h3>
+        <div class="chips">
+          <span class="chip">Playwright</span><span class="chip">Selenium</span><span class="chip">Postman</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>DevOps &amp; Cloud</h3>
+        <div class="chips">
+          <span class="chip">Azure DevOps</span><span class="chip">Azure Storage Tables</span><span class="chip">Cosmos DB</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Methodologies</h3>
+        <div class="chips">
+          <span class="chip">Agile</span><span class="chip">Scrum</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Additional</h3>
+        <div class="chips">
+          <span class="chip">AI-Augmented QA Workflows</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-head"><span class="idx">04</span><h2>Projects</h2></div>
+    <div class="job">
+      <div class="job-head">
+        <span class="job-title">Studica Testing — Playwright Automation Suite</span>
+      </div>
+      <div class="job-meta">Playwright · Postman · Azure DevOps · Azure Table Storage · SQL</div>
+      <ul class="checklist" style="margin-top:14px;">
+        <li>Built a Playwright automation framework for KMDStudica (Microsoft Teams EdTech platform), covering complex testing scenarios.</li>
+        <li>Used Azure Table Storage and configured an Azure DevOps CI/CD pipeline for automated testing.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="achievements">
+    <div class="section-head"><span class="idx">05</span><h2>Key Achievements</h2></div>
+    <div class="job">
+      <ul class="checklist">
+        <li>Built end-to-end Playwright automation for the KMDStudica (Microsoft Teams-based) EdTech platform.</li>
+        <li>Reported and tracked <b>130+ structured bug tickets</b> in a single post-deployment audit, improving coverage across 8+ feature areas.</li>
+        <li>Improved test reliability by integrating async polling via Azure Table Storage.</li>
+        <li>Configured Azure DevOps CI/CD pipelines for automated testing.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="section-head"><span class="idx">06</span><h2>Education</h2></div>
+    <div class="job">
+      <div class="edu-row">
+        <div>
+          <div class="edu-degree">Bachelor of Computer Science</div>
+          <div class="edu-school">Barani Institute of Management Sciences</div>
+        </div>
+        <div class="edu-date">2021 — 2024</div>
+      </div>
+      <div class="edu-row">
+        <div>
+          <div class="edu-degree">FSc Pre Engineering</div>
+          <div class="edu-school">Steps College</div>
+        </div>
+        <div class="edu-date">2018 — 2020</div>
+      </div>
+      <div class="edu-row">
+        <div>
+          <div class="edu-degree">Matric (Computer Science)</div>
+          <div class="edu-school">Al-Huda School</div>
+        </div>
+        <div class="edu-date">2016 — 2018</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="ok">✓ 6/6 sections passed</span> · resume.render() completed without errors
+  </footer>
+
+</div>
+</body>
+</html>
